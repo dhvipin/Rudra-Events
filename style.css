@@ -401,7 +401,7 @@
 
     .count-data {
         flex-direction: column;
-        background-color: #007bff;
+        /* background-color: #007bff; */
         gap: 30px;
         height: auto;
     }
