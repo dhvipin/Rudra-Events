@@ -226,6 +226,8 @@
 @media (max-width: 576px) {
     .heading-div h1 {
         font-size: 25vw;
+        margin-top: 10px;
+        /* background-color: #007bff; */
     }
 
     .heading-div h2 {
@@ -569,6 +571,7 @@
 .wiz-footer-middle h3 {
     font-size: 18px;
     align-items: center;
+    padding-top: 5px;
 }
 
 .wiz-contact-block h3,
