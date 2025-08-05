@@ -144,6 +144,12 @@
         bottom: 10px;
     } */
 
+
+
+/* about us all css is here  */
+
+
+
 .about-us {
     background-color: white;
     width: 100%;
@@ -191,6 +197,49 @@
 .text-data p {
     font-size: 14.5px;
 }
+
+/* Tablets */
+@media (max-width: 992px) {
+    .about-us {
+        flex-direction: column;
+        padding: 30px 15px;
+    }
+
+    .heading-div,
+    .text-data {
+        width: 100%;
+    }
+
+    .heading-div h1 {
+        font-size: 20vw;
+        text-align: center;
+    }
+
+    .heading-div h2 {
+        font-size: 1.8rem;
+        top: 30px;
+        left: 20px;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 576px) {
+    .heading-div h1 {
+        font-size: 25vw;
+    }
+
+    .heading-div h2 {
+        font-size: 1.5rem;
+        top: 20px;
+        left: 15px;
+    }
+
+    .text-data p {
+        font-size: 0.95rem;
+    }
+}
+
+
 
 /* audience div all csss  */
 .audience-CountDIV {
@@ -592,7 +641,7 @@
 
 
 .wiz-copy {
-    background-color: #7c7c7c;
+    background-color: #808080;
     color: white;
     text-align: center;
     padding: 10px;
@@ -869,37 +918,40 @@
 /* moving line text css  */
 
 .scroll-left {
- height: 40px;	
- overflow: hidden;
- position: relative;
- background: transparent ;
- color: white;
- width:100%;
- margin:0;
- padding: 0;
- border-bottom: 1px solid white;
+    height: 40px;
+    overflow: hidden;
+    position: relative;
+    background: transparent;
+    color: white;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid white;
 }
-.scroll-left p {
- position: absolute;
- width: 100%;
- height: 100%;
- margin: 0;
- line-height: 50px;
- text-align: center;
- /* Starting position */
- transform:translateX(100%);
- /* Apply animation to this element */
- animation: scroll-left 15s linear infinite;
-}
+
+/* .scroll-left p {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    /* Starting position */
+/* transform: translateX(100%); */
+/* Apply animation to this element */
+/* animation: scroll-left 15s linear infinite; */
+/* } */
+
 /* Move it (define the animation) */
-@keyframes scroll-left {
- 0%   {
- transform: translateX(100%); 		
- }
- 100% {
- transform: translateX(-100%); 
- }
-}
+/* @keyframes scroll-left {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+} */
 
 
 
