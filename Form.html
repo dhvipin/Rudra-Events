@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Googlies - Service Subscription & Client Intake Form</title>
+    <style>
+        :root {
+            --red: #E11C2A;
+            --white: #fff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(225, 28, 42, 0.12), transparent 40%),
+                radial-gradient(circle at bottom right, rgba(225, 28, 42, 0.10), transparent 45%),
+                var(--white);
+            color: #111;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: var(--white);
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(225, 28, 42, 0.12);
+            border: 1px solid rgba(225, 28, 42, 0.18);
+        }
+
+        h1 {
+            color: var(--red);
+            font-weight: 900;
+            font-size: 2.8rem;
+            margin-bottom: 0.2em;
+        }
+
+        p.description {
+            max-width: 900px;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 40px;
+            color: #222;
+        }
+
+        h2.section-title {
+            color: var(--red);
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2.section-title::before {
+            content: '';
+            width: 8px;
+            height: 24px;
+            background-color: var(--red);
+            border-radius: 4px;
+            margin-right: 12px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 6px;
+            color: #222;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 14px;
+            border-radius: 14px;
+            border: 1.5px solid rgba(225, 28, 42, 0.28);
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--red);
+            box-shadow: 0 0 8px rgba(225, 28, 42, 0.3);
+        }
+
+        /* Checkbox and Radio containers */
+        .option-group {
+            margin-bottom: 30px;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        label.option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            color: #222;
+        }
+
+        label.option-label input[type="checkbox"],
+        label.option-label input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            cursor: pointer;
+            accent-color: var(--red);
+        }
+
+        /* Number input next to checkbox text for contracts */
+        .contract-number {
+            margin-left: 8px;
+            width: 80px;
+            padding: 7px 10px;
+            font-size: 13px;
+            border-radius: 12px;
+            border: 1.5px solid rgba(225, 28, 42, 0.28);
+        }
+
+        /* Subscription plan container */
+        .subscription-plan label.option-label span strong {
+            color: var(--red);
+        }
+
+        /* Legal disclaimers */
+        .legal-disclaimer p {
+            margin-bottom: 16px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .legal-disclaimer p strong {
+            color: var(--red);
+        }
+
+        /* Checkbox for legal acknowledgment */
+        .legal-ack {
+            margin-top: 15px;
+        }
+
+        /* Submit button */
+        button.submit-btn {
+            background: var(--red);
+            color: var(--white);
+            font-weight: 800;
+            font-size: 16px;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            border-radius: 18px;
+            cursor: pointer;
+            letter-spacing: 0.6px;
+            margin-top: 30px;
+            transition: background 0.3s ease;
+        }
+
+        button.submit-btn:hover {
+            background: #bb1621;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Googlies - Service Subscription & Client Intake Form</h1>
+        <p class="description">
+            Welcome to Googlies: Government Tenders Portals Registrations & Bids Submission Service Provider.
+            To initiate your subscription, please fill out this comprehensive intake form.
+            IMPORTANT: Subscription activation and service commencement are strictly subject to the realization of
+            payment.
+            Legal Disclaimer: Googlies acts as a professional consultant. We do not guarantee the awarding of any
+            tender,
+            as the final selection is the sole discretion of the Government Authority.
+            By submitting this form, you agree to our full Terms of Service.
+        </p>
+
+        <form id="subscriptionForm">
+
+            <!-- 1. Corporate Identity -->
+            <section>
+                <h2 class="section-title">1. Corporate Identity (Company Data)</h2>
+                <p>Please provide the official registered details of the legal entity subscribing to the service.</p>
+                <div class="form-row">
+                    <div style="flex:1 1 100%;">
+                        <label for="companyName">Full Registered Company Name</label>
+                        <input id="companyName" name="companyName" type="text" required />
+                    </div>
+                    <div style="flex:1 1 45%;">
+                        <label for="firmConstitution">Constitution of Firm</label>
+                        <select id="firmConstitution" name="firmConstitution" required>
+                            <option value="" disabled selected>Select Constitution</option>
+                            <option>Proprietorship</option>
+                            <option>Partnership</option>
+                            <option>LLP</option>
+                            <option>Pvt Ltd</option>
+                            <option>Public Ltd</option>
+                            <option>NGO</option>
+                        </select>
+                    </div>
+                    <div style="flex:1 1 45%;">
+                        <label for="registrationNumber">Company Registration Number (CIN/LLPIN/Firm Reg)</label>
+                        <input id="registrationNumber" name="registrationNumber" type="text" required />
+                    </div>
+                    <div style="flex:1 1 100%;">
+                        <label for="officeAddress">Registered Office Address</label>
+                        <textarea id="officeAddress" name="officeAddress" required></textarea>
+                    </div>
+                    <div style="flex:1 1 45%;">
+                        <label for="gstin">GST Identification Number (GSTIN)</label>
+                        <input id="gstin" name="gstin" type="text" required />
+                    </div>
+                    <div style="flex:1 1 45%;">
+                        <label for="pan">PAN of the Entity</label>
+                        <input id="pan" name="pan" type="text" required />
+                    </div>
+                    <div style="flex:1 1 45%;">
+                        <label for="msme">MSME / Udyam Registration Number</label>
+                        <input id="msme" name="msme" type="text" />
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Business Profile -->
+            <section>
+                <h2 class="section-title">2. Business Profile & Operational Data</h2>
+                <p>Details regarding your core business activities and market standing.</p>
+                <div class="form-row">
+                    <div style="flex:1 1 45%;">
+                        <label for="primaryIndustry">Primary Industry/Sector</label>
+                        <input id="primaryIndustry" name="primaryIndustry" type="text" required />
+                    </div>
+                    <div style="flex:1 1 55%;">
+                        <label for="coreProducts">Core Products/Services (HSN/SAC Codes)</label>
+                        <textarea id="coreProducts" name="coreProducts" required></textarea>
+                    </div>
+                    <div style="flex:1 1 45%;">
+                        <label for="annualTurnover">Annual Turnover (Average of last 3 FYs)</label>
+                        <input id="annualTurnover" name="annualTurnover" type="text" required />
+                    </div>
+                    <div style="flex:1 1 45%;">
+                        <label for="geographicPresence">Geographic Presence</label>
+                        <select id="geographicPresence" name="geographicPresence" required>
+                            <option value="" disabled selected>Select Presence</option>
+                            <option>Local</option>
+                            <option>State-wide</option>
+                            <option>Pan-India</option>
+                            <option>International</option>
+                        </select>
+                    </div>
+                    <div style="flex:1 1 45%;">
+                        <label for="authSignatory">Authorized Signatory Name</label>
+                        <input id="authSignatory" name="authSignatory" type="text" required />
+                    </div>
+                    <div style="flex:1 1 45%;">
+                        <label for="designation">Designation</label>
+                        <input id="designation" name="designation" type="text" required />
+                    </div>
+                    <div style="flex:1 1 45%;">
+                        <label for="officialMobile">Official Mobile Number</label>
+                        <input id="officialMobile" name="officialMobile" type="text" required />
+                    </div>
+                    <div style="flex:1 1 45%;">
+                        <label for="officialEmail">Official Email Address</label>
+                        <input id="officialEmail" name="officialEmail" type="email" required />
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Government Tendering History & Experience -->
+            <section>
+                <h2 class="section-title">3. Government Tendering History & Experience</h2>
+
+                <div class="option-group">
+                    <label><strong>Current Portal Registrations</strong></label>
+                    <div class="checkbox-group">
+                        <label class="option-label">
+                            <input type="checkbox" name="portalRegistrations" value="GeM" />
+                            GeM
+                        </label>
+                        <label class="option-label">
+                            <input type="checkbox" name="portalRegistrations" value="CPPP" />
+                            CPPP
+                        </label>
+                        <label class="option-label">
+                            <input type="checkbox" name="portalRegistrations" value="IREPS" />
+                            IREPS
+                        </label>
+                        <label class="option-label">
+                            <input type="checkbox" name="portalRegistrations" value="State Portals" />
+                            State Portals
+                        </label>
+                        <label class="option-label">
+                            <input type="checkbox" name="portalRegistrations" value="None" />
+                            None
+                        </label>
+                    </div>
+                </div>
+
+                <div class="option-group" style="margin-top: 15px;">
+                    <label for="dscAvailability"><strong>Digital Signature Certificate (DSC)
+                            Availability</strong></label>
+                    <select id="dscAvailability" name="dscAvailability" required>
+                        <option value="" disabled selected>Select DSC status</option>
+                        <option>Class-3 Ready</option>
+                        <option>Expired</option>
+                        <option>No DSC</option>
+                    </select>
+                </div>
+
+                <div class="option-group" style="margin-top: 15px;">
+                    <label><strong>Past Bidding Record</strong></label>
+                    <div class="checkbox-group">
+                        <label class="option-label">
+                            <input type="checkbox" id="biddingNewEntrant" name="pastBiddingRecord"
+                                value="New Entrant" />
+                            No prior experience (New Entrant)
+                        </label>
+                        <label class="option-label">
+                            <input type="checkbox" id="biddingParticipated" name="pastBiddingRecord"
+                                value="Participated but never won" />
+                            Have participated but never won
+                        </label>
+                        <label class="option-label">
+                            <input type="checkbox" id="biddingWon" name="pastBiddingRecord" value="Won Contracts" />
+                            Have won and executed
+                            <input type="number" id="contractsExecuted" name="contractsExecuted" class="contract-number"
+                                min="0" placeholder="___" style="display:none;" />
+                            number of government contracts
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row" style="margin-top: 15px;">
+                    <div style="flex: 1 1 45%;">
+                        <label for="largestContractValue">Largest Contract Value Executed to Date (INR)</label>
+                        <input id="largestContractValue" name="largestContractValue" type="text" />
+                    </div>
+                    <div style="flex: 1 1 55%;">
+                        <label for="disqualificationReasons">Common Reasons for Past Disqualifications (if any)</label>
+                        <textarea id="disqualificationReasons" name="disqualificationReasons"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Subscription Plan Selection -->
+            <section>
+                <h2 class="section-title">4. Subscription Plan Selection</h2>
+                <p>Select the plan that best suits your organizational goals.</p>
+
+                <div class="radio-group subscription-plan" role="radiogroup" aria-label="Subscription Plan Selection">
+                    <label class="option-label">
+                        <input type="radio" name="subscriptionPlan" value="Foundation Plan" required />
+                        <span><strong>Foundation Plan</strong> – One-time Registration on 3 Portals (GeM + 2
+                            Others)</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="subscriptionPlan" value="Growth Plan" />
+                        <span><strong>Growth Plan</strong> – Registration + 5 Bid Submissions per Month</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="subscriptionPlan" value="Elite Plan" />
+                        <span><strong>Elite Plan</strong> – Unlimited Bids + Technical Audit + Document
+                            Digitization</span>
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="subscriptionPlan" value="Custom Plan" />
+                        <span><strong>Custom Plan</strong> – As per discussed Scope of Work (SOW)</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- 5. Legal Disclaimers & Subscription Terms -->
+            <section class="legal-disclaimer">
+                <h2 class="section-title">5. Legal Disclaimers & Subscription Terms</h2>
+
+                <p><strong>Payment & Activation:</strong> Subscription services are deemed reserved only upon the full
+                    realization of the subscription fee in the bank account of Googlies. No service obligations exist
+                    prior to payment confirmation.</p>
+
+                <p><strong>Advisory Nature:</strong> Googlies provides facilitation and consultancy services for portal
+                    registration and bid submission. We act as a professional intermediary.</p>
+
+                <p><strong>No Guarantee of Tender Award:</strong> The client acknowledges that the final decision to
+                    award a tender rests solely with the Government Department/Tender Inviting Authority. Googlies does
+                    not guarantee, promise, or warrant any specific outcome, tender win, or revenue generation.</p>
+
+                <p><strong>Data Authenticity:</strong> The client is solely responsible for the legality and
+                    authenticity of the documents provided (e.g., Turnover certificates, Experience letters). Googlies
+                    shall be held harmless in the event of bid rejection or debarment due to fraudulent or inaccurate
+                    documentation provided by the client.</p>
+
+                <p><strong>Limitation of Liability:</strong> Googlies shall not be liable for any losses (financial or
+                    otherwise) arising from portal technical glitches, changes in government policy, or bid rejections
+                    based on the Tendering Authority's discretion.</p>
+
+                <p><strong>Jurisdiction:</strong> All disputes are subject to the exclusive jurisdiction of the courts
+                    in Delhi.</p>
+
+                <label class="option-label legal-ack" style="margin-top:10px;">
+                    <input type="checkbox" name="acknowledgment" required />
+                    <span>I acknowledge and agree to all the above terms, disclaimers, and conditions.</span>
+                </label>
+            </section>
+
+            <button class="submit-btn" type="submit">SUBMIT & PROCEED TO PAYMENT</button>
+        </form>
+    </div>
+
+    <script>
+        // Show/hide number input based on checkbox for 'Have won and executed...'
+        const wonCheckbox = document.getElementById('biddingWon');
+        const contractsInput = document.getElementById('contractsExecuted');
+
+        wonCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                contractsInput.style.display = 'inline-block';
+                contractsInput.setAttribute('required', 'required');
+            } else {
+                contractsInput.style.display = 'none';
+                contractsInput.removeAttribute('required');
+                contractsInput.value = '';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
