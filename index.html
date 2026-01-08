@@ -200,6 +200,36 @@
                 flex-direction: column;
             }
         }
+
+        .form-row>div {
+            margin-right: 40px;
+        }
+
+        /* Success/Error Messages */
+        .message {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .loading {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
     </style>
 </head>
 
@@ -218,7 +248,9 @@
             By submitting this form, you agree to our full Terms of Service.
         </p>
 
-        <form id="subscriptionForm">
+        <div id="message" class="message"></div>
+
+        <form id="subscriptionForm" method="POST">
 
             <!-- 1. Corporate Identity -->
             <section>
@@ -226,35 +258,37 @@
                 <p>Please provide the official registered details of the legal entity subscribing to the service.</p>
                 <div class="form-row">
                     <div style="flex:1 1 100%;">
-                        <label for="companyName">Full Registered Company Name</label>
+                        <label for="companyName">Full Registered Company Name <span style="color:red">*</span></label>
                         <input id="companyName" name="companyName" type="text" required />
                     </div>
                     <div style="flex:1 1 45%;">
-                        <label for="firmConstitution">Constitution of Firm</label>
+                        <label for="firmConstitution">Constitution of Firm <span style="color:red">*</span></label>
                         <select id="firmConstitution" name="firmConstitution" required>
                             <option value="" disabled selected>Select Constitution</option>
-                            <option>Proprietorship</option>
-                            <option>Partnership</option>
-                            <option>LLP</option>
-                            <option>Pvt Ltd</option>
-                            <option>Public Ltd</option>
-                            <option>NGO</option>
+                            <option value="Proprietorship">Proprietorship</option>
+                            <option value="Partnership">Partnership</option>
+                            <option value="LLP">LLP</option>
+                            <option value="Pvt Ltd">Pvt Ltd</option>
+                            <option value="Public Ltd">Public Ltd</option>
+                            <option value="NGO">NGO</option>
                         </select>
                     </div>
                     <div style="flex:1 1 45%;">
-                        <label for="registrationNumber">Company Registration Number (CIN/LLPIN/Firm Reg)</label>
+                        <label for="registrationNumber">Company Registration Number (CIN/LLPIN/Firm Reg) <span
+                                style="color:red">*</span></label>
                         <input id="registrationNumber" name="registrationNumber" type="text" required />
                     </div>
                     <div style="flex:1 1 100%;">
-                        <label for="officeAddress">Registered Office Address</label>
+                        <label for="officeAddress">Registered Office Address As per GSTIN <span
+                                style="color:red">*</span></label>
                         <textarea id="officeAddress" name="officeAddress" required></textarea>
                     </div>
                     <div style="flex:1 1 45%;">
-                        <label for="gstin">GST Identification Number (GSTIN)</label>
+                        <label for="gstin">GST Identification Number (GSTIN) <span style="color:red">*</span></label>
                         <input id="gstin" name="gstin" type="text" required />
                     </div>
                     <div style="flex:1 1 45%;">
-                        <label for="pan">PAN of the Entity</label>
+                        <label for="pan">PAN of the Entity <span style="color:red">*</span></label>
                         <input id="pan" name="pan" type="text" required />
                     </div>
                     <div style="flex:1 1 45%;">
@@ -270,41 +304,43 @@
                 <p>Details regarding your core business activities and market standing.</p>
                 <div class="form-row">
                     <div style="flex:1 1 45%;">
-                        <label for="primaryIndustry">Primary Industry/Sector</label>
+                        <label for="primaryIndustry">Primary Industry/Sector <span style="color:red">*</span></label>
                         <input id="primaryIndustry" name="primaryIndustry" type="text" required />
                     </div>
                     <div style="flex:1 1 55%;">
-                        <label for="coreProducts">Core Products/Services (HSN/SAC Codes)</label>
+                        <label for="coreProducts">Core Products/Services (HSN/SAC Codes) <span
+                                style="color:red">*</span></label>
                         <textarea id="coreProducts" name="coreProducts" required></textarea>
                     </div>
                     <div style="flex:1 1 45%;">
-                        <label for="annualTurnover">Annual Turnover (Average of last 3 FYs)</label>
+                        <label for="annualTurnover">Annual Turnover (Average of last 3 FYs) <span
+                                style="color:red">*</span></label>
                         <input id="annualTurnover" name="annualTurnover" type="text" required />
                     </div>
                     <div style="flex:1 1 45%;">
-                        <label for="geographicPresence">Geographic Presence</label>
+                        <label for="geographicPresence">Geographic Presence <span style="color:red">*</span></label>
                         <select id="geographicPresence" name="geographicPresence" required>
                             <option value="" disabled selected>Select Presence</option>
-                            <option>Local</option>
-                            <option>State-wide</option>
-                            <option>Pan-India</option>
-                            <option>International</option>
+                            <option value="Local">Local</option>
+                            <option value="State-wide">State-wide</option>
+                            <option value="Pan-India">Pan-India</option>
+                            <option value="International">International</option>
                         </select>
                     </div>
                     <div style="flex:1 1 45%;">
-                        <label for="authSignatory">Authorized Signatory Name</label>
+                        <label for="authSignatory">Authorized Signatory Name <span style="color:red">*</span></label>
                         <input id="authSignatory" name="authSignatory" type="text" required />
                     </div>
                     <div style="flex:1 1 45%;">
-                        <label for="designation">Designation</label>
+                        <label for="designation">Designation <span style="color:red">*</span></label>
                         <input id="designation" name="designation" type="text" required />
                     </div>
                     <div style="flex:1 1 45%;">
-                        <label for="officialMobile">Official Mobile Number</label>
+                        <label for="officialMobile">Official Mobile Number <span style="color:red">*</span></label>
                         <input id="officialMobile" name="officialMobile" type="text" required />
                     </div>
                     <div style="flex:1 1 45%;">
-                        <label for="officialEmail">Official Email Address</label>
+                        <label for="officialEmail">Official Email Address <span style="color:red">*</span></label>
                         <input id="officialEmail" name="officialEmail" type="email" required />
                     </div>
                 </div>
@@ -315,7 +351,7 @@
                 <h2 class="section-title">3. Government Tendering History & Experience</h2>
 
                 <div class="option-group">
-                    <label><strong>Current Portal Registrations</strong></label>
+                    <label><strong>Current Portal Registrations</strong> <span style="color:red">*</span></label>
                     <div class="checkbox-group">
                         <label class="option-label">
                             <input type="checkbox" name="portalRegistrations" value="GeM" />
@@ -342,33 +378,31 @@
 
                 <div class="option-group" style="margin-top: 15px;">
                     <label for="dscAvailability"><strong>Digital Signature Certificate (DSC)
-                            Availability</strong></label>
+                            Availability</strong> <span style="color:red">*</span></label>
                     <select id="dscAvailability" name="dscAvailability" required>
                         <option value="" disabled selected>Select DSC status</option>
-                        <option>Class-3 Ready</option>
-                        <option>Expired</option>
-                        <option>No DSC</option>
+                        <option value="Class-3 Ready">Class-3 Ready</option>
+                        <option value="Expired">Expired</option>
+                        <option value="No DSC">No DSC</option>
                     </select>
                 </div>
 
                 <div class="option-group" style="margin-top: 15px;">
-                    <label><strong>Past Bidding Record</strong></label>
+                    <label><strong>Past Bidding Record</strong> <span style="color:red">*</span></label>
                     <div class="checkbox-group">
                         <label class="option-label">
-                            <input type="checkbox" id="biddingNewEntrant" name="pastBiddingRecord"
-                                value="New Entrant" />
+                            <input type="checkbox" name="pastBiddingRecord" value="New Entrant" />
                             No prior experience (New Entrant)
                         </label>
                         <label class="option-label">
-                            <input type="checkbox" id="biddingParticipated" name="pastBiddingRecord"
-                                value="Participated but never won" />
+                            <input type="checkbox" name="pastBiddingRecord" value="Participated but never won" />
                             Have participated but never won
                         </label>
                         <label class="option-label">
                             <input type="checkbox" id="biddingWon" name="pastBiddingRecord" value="Won Contracts" />
                             Have won and executed
                             <input type="number" id="contractsExecuted" name="contractsExecuted" class="contract-number"
-                                min="0" placeholder="___" style="display:none;" />
+                                min="0" placeholder="0" style="display:none;" />
                             number of government contracts
                         </label>
                     </div>
@@ -388,27 +422,161 @@
 
             <!-- 4. Subscription Plan Selection -->
             <section>
-                <h2 class="section-title">4. Subscription Plan Selection</h2>
-                <p>Select the plan that best suits your organizational goals.</p>
+                <h2 class="section-title">4. Subscription Plan Selection<span style="color:red">*</span></h2>
 
-                <div class="radio-group subscription-plan" role="radiogroup" aria-label="Subscription Plan Selection">
+                <div class="checkbox-group">
                     <label class="option-label">
-                        <input type="radio" name="subscriptionPlan" value="Foundation Plan" required />
-                        <span><strong>Foundation Plan</strong> – One-time Registration on 3 Portals (GeM + 2
-                            Others)</span>
+                        <input type="checkbox" name="subscriptionPlans[]"
+                            value="GeM Vendor Registration – ₹5,000 – Lifetime Profile Management" required>
+                        1. GeM Vendor Registration – ₹5,000 Lifetime Profile Management
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]"
+                            value="CPPP Enrolment – ₹3,500 One-time Setup">
+                        2. CPPP Enrolment – ₹3,500 One-time Setup
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]"
+                            value="State e-Procure Reg. – ₹4,500  Per State Portal">
+                        3. State e-Procure Reg. – ₹4,500 Per State Portal
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="DSC Assistance – ₹2,500 2 Years">
+                        4. DSC Assistance – ₹2,500 2 Years
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]"
+                            value="Udyam (MSME) Reg. – ₹2,000 Lifetime Validity">
+                        5. Udyam (MSME) Reg. – ₹2,000 Lifetime Validity
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]"
+                            value="Startup India Recognition – ₹15,000 Permanent Recognition">
+                        6. Startup India Recognition – ₹15,000 Permanent Recognition
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="GeM Vendor Assessment – ₹25,000">
+                        7. GeM Vendor Assessment – ₹25,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="Catalog Management – ₹10,000">
+                        8. Catalog Management – ₹10,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="OEM Panel Creation – ₹12,000">
+                        9. OEM Panel Creation – ₹12,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="L-1 Strategy/Purchase – ₹7,500">
+                        10. L-1 Strategy/Purchase – ₹7,500
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="GeM Incident Management – ₹10,000">
+                        11. GeM Incident Management – ₹10,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="Technical Bid Preparation – ₹15,000 ">
+                        12. Technical Bid Preparation – ₹15,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]"
+                            value="Financial Bid (BOQ) Strategy – ₹7,500 ">
+                        13. Financial Bid (BOQ) Strategy – ₹7,500
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="Tender Document Analysis – ₹5,000">
+                        14. Tender Document Analysis – ₹5,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="Compliance Audit (Pre-bid) – ₹8,000">
+                        15. Compliance Audit (Pre-bid) – ₹8,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="JV & Consortium Consulting – ₹25,000 ">
+                        16. JV & Consortium Consulting – ₹25,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="Pre-Bid Representation – ₹10,000 ">
+                        17. Pre-Bid Representation – ₹10,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]"
+                            value="E-Auction / Reverse Auction – ₹12,500 ">
+                        18. E-Auction / Reverse Auction – ₹12,500
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="Tender Monitoring/Alerts – ₹12,000">
+                        19. Tender Monitoring/Alerts – ₹12,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="Post-Bid Support – ₹10,000">
+                        20. Post-Bid Support – ₹10,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="PBG & EMD Advisory – ₹5,000">
+                        21. PBG & EMD Advisory – ₹5,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]"
+                            value="ISO Certification Consulting – ₹20,000">
+                        22. ISO Certification Consulting – ₹20,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="Competitor Bid Analysis – ₹12,000">
+                        23. Competitor Bid Analysis – ₹12,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="PSU Vendor Empanelment – ₹15,000 ">
+                        24. PSU Vendor Empanelment – ₹15,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="Policy Interpretation (MII) – ₹7,500 ">
+                        25. Policy Interpretation (MII) – ₹7,500
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]" value="Tender Rectification – ₹10,000 ">
+                        26. Tender Rectification – ₹10,000
+                    </label>
+
+                    <label class="option-label">
+                        <input type="checkbox" name="subscriptionPlans[]"
+                            value="Single Bid (The 'Trial' Plan) – ₹7,500.00 (Fixed) per bid + 2% Success Fee">
+                        27. Single Bid (The "Trial" Plan) – ₹7,500.00 (Fixed) per bid + 2% Success Fee
                     </label>
                     <label class="option-label">
-                        <input type="radio" name="subscriptionPlan" value="Growth Plan" />
-                        <span><strong>Growth Plan</strong> – Registration + 5 Bid Submissions per Month</span>
+                        <input type="checkbox" name="subscriptionPlans[]"
+                            value="Monthly Retainer (The 'Active Falcons') – ₹10,000 / Month + 1% Success Fee">
+                        28. Monthly Retainer (The "Active Falcons") – ₹10,000 / Month + 1% Success Fee
                     </label>
                     <label class="option-label">
-                        <input type="radio" name="subscriptionPlan" value="Elite Plan" />
-                        <span><strong>Elite Plan</strong> – Unlimited Bids + Technical Audit + Document
-                            Digitization</span>
-                    </label>
-                    <label class="option-label">
-                        <input type="radio" name="subscriptionPlan" value="Custom Plan" />
-                        <span><strong>Custom Plan</strong> – As per discussed Scope of Work (SOW)</span>
+                        <input type="checkbox" name="subscriptionPlans[]"
+                            value="Elite (Custom & High Value) – ₹20,000 / Month (Advance) + 0.5% Success Fee">
+                        29. Elite (Custom & High Value) – ₹20,000 / Month (Advance) + 0.5% Success Fee
                     </label>
                 </div>
             </section>
@@ -442,7 +610,8 @@
 
                 <label class="option-label legal-ack" style="margin-top:10px;">
                     <input type="checkbox" name="acknowledgment" required />
-                    <span>I acknowledge and agree to all the above terms, disclaimers, and conditions.</span>
+                    <span>I acknowledge and agree to all the above terms, disclaimers, and conditions.</span> <span
+                        style="color:red">*</span>
                 </label>
             </section>
 
@@ -451,19 +620,81 @@
     </div>
 
     <script>
-        // Show/hide number input based on checkbox for 'Have won and executed...'
-        const wonCheckbox = document.getElementById('biddingWon');
-        const contractsInput = document.getElementById('contractsExecuted');
-
-        wonCheckbox.addEventListener('change', function () {
+        // Show/hide contracts executed input
+        document.getElementById('biddingWon').addEventListener('change', function () {
+            var contractsInput = document.getElementById('contractsExecuted');
             if (this.checked) {
                 contractsInput.style.display = 'inline-block';
                 contractsInput.setAttribute('required', 'required');
             } else {
                 contractsInput.style.display = 'none';
                 contractsInput.removeAttribute('required');
-                contractsInput.value = '';
             }
+        });
+
+        // Handle form submission
+        document.getElementById('subscriptionForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var form = e.target;
+            var messageDiv = document.getElementById('message');
+            var submitBtn = form.querySelector('.submit-btn');
+
+            // Show loading state
+            messageDiv.className = 'message loading';
+            messageDiv.textContent = 'Submitting form, please wait...';
+            messageDiv.style.display = 'block';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'SUBMITTING...';
+
+            // Prepare form data
+            var formData = new FormData(form);
+
+            // Convert to URLSearchParams
+            var params = new URLSearchParams();
+
+            // Handle checkboxes properly
+            formData.forEach(function (value, key) {
+                if (key === 'portalRegistrations' || key === 'pastBiddingRecord' || key === 'subscriptionPlans[]') {
+                    // For checkboxes, append with same key for array
+                    params.append(key, value);
+                } else {
+                    params.append(key, value);
+                }
+            });
+
+            // Your Google Apps Script Web App URL
+            // IMPORTANT: Replace with your actual URL after deploying
+            var scriptUrl = 'https://script.google.com/macros/s/AKfycbxRp0w5OOopq-UMc421djCigfx2TGPvSrpRrjERpnB2nyl0RU94lzoSLZvTGa4nPSM/exec';
+            // In your HTML form, update the fetch response handling:
+            fetch(scriptUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: params.toString()
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        messageDiv.className = 'message success';
+                        messageDiv.innerHTML = '<strong>Success!</strong> Form submitted successfully. Check your email for confirmation with attachment.';
+
+                        setTimeout(function () {
+                            alert('Thank you for your submission! You will receive a confirmation email with details shortly.');
+                            form.reset();
+                        }, 1000);
+                    } else {
+                        throw new Error(data.message || 'Submission failed');
+                    }
+                })
+                .catch(error => {
+                    messageDiv.className = 'message error';
+                    messageDiv.textContent = error.message;
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'SUBMIT';
+                });
+
         });
     </script>
 
